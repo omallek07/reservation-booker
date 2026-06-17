@@ -1,0 +1,7 @@
+{
+  "js/ts.preferences.includePackageJsonAutoImports": "on",
+  "js/ts.preferences.importModuleSpecifier": "non-relative",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  }
+}

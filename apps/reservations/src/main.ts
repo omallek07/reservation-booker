@@ -1,4 +1,5 @@
 import { ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { Logger } from 'nestjs-pino';
 import { ReservationsModule } from './reservations.module';
@@ -11,7 +12,8 @@ async function bootstrap() {
     }),
   );
   app.useLogger(app.get(Logger));
-  await app.listen(3000);
+  const configService = app.get(ConfigService);
+  await app.listen(configService.get('PORT') as string);
 }
 
 bootstrap();

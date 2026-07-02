@@ -2,6 +2,7 @@ import { LoggerModule } from '@app/common';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
+import { LocalStrategy } from 'apps/auth/src/strategies/local.strategy';
 import Joi from 'joi';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
@@ -31,6 +32,6 @@ import { UsersModule } from './users/users.module';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, LocalStrategy],
 })
 export class AuthModule {}

@@ -1,3 +1,4 @@
+import { type UserDto } from '@app/common';
 import {
   CanActivate,
   ExecutionContext,
@@ -24,11 +25,13 @@ export class JwtAuthGuard implements CanActivate {
       return false;
     }
 
-    return this.authClient.send('authenticate', { Authentication: jwt }).pipe(
-      tap((res) => {
-        context.switchToHttp().getRequest().user = res;
-      }),
-      map(() => true),
-    );
+    return this.authClient
+      .send<UserDto>('authenticate', { Authentication: jwt })
+      .pipe(
+        tap((res) => {
+          context.switchToHttp().getRequest().user = res;
+        }),
+        map(() => true),
+      );
   }
 }

@@ -21,8 +21,8 @@ import { ReservationsService } from './reservations.service';
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({
-        MONGODB_URI: Joi.string().required(),
-        PORT: Joi.number().required(),
+        MONGODB_URI: Joi.string(),
+        PORT: Joi.number(),
       }),
     }),
     ClientsModule.registerAsync([

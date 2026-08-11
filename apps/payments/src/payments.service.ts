@@ -1,6 +1,6 @@
+import { CreateChargeDto } from '@app/common/dto/create-charge.dto';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { CreateChargeDto } from 'apps/payments/src/dto/create-charge.dto';
 import Stripe from 'stripe';
 
 @Injectable()

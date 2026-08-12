@@ -15,18 +15,19 @@ export class PaymentsService {
     apiVersion: '2026-07-29.dahlia',
   });
 
-  async createCharge({ card, amount }: CreateChargeDto) {
-    const paymentMethod = await this.stripe.paymentMethods.create({
-      type: 'card',
-      card: card,
-    });
+  async createCharge({ amount }: CreateChargeDto) {
+    // const paymentMethod = await this.stripe.paymentMethods.create({
+    //   type: 'card',
+    //   card,
+    // });
 
     const paymentIntent = await this.stripe.paymentIntents.create({
-      payment_method: paymentMethod.id,
+      // payment_method: paymentMethod.id,
       amount: amount * 100,
       currency: 'usd',
       confirm: true,
-      payment_method_types: ['card'],
+      // Use stripe test card
+      payment_method: 'pm_card_visa',
     });
 
     return paymentIntent;
